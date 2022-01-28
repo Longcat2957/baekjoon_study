@@ -1,4 +1,3 @@
-import queue
 import sys
 N, M, V = map(int, input().split())
 graph = [[]* i for i in range(N+1)]
@@ -16,9 +15,6 @@ for i in range(1, len(graph)):
 # 정점의 번호 V
 # DFS(깊이 우선 탐색)
 # 일반적으로 DFS는 스택으로 구현하며, 재귀를 이용하면 더 간단하게 구현할 수 있다.
-# 다음은 재귀를 이용한 구현 방식이다.
-ans_dfs = []
-ans_bfs = []
 def DFS(graph:list, v:int):
     visited = []
     stack = [v]
