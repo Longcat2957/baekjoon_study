@@ -2,25 +2,17 @@ import sys
 input = sys.stdin.readline
 n = int(input())
 # n 포도주 잔의 개수 이다.
-wine_list = [0]
-matrix = [[0,0] for col in range(n)]
-for i in range(n):
-    push = int(input())
-    if i == 0:
-        matrix[i][0] = push
-    elif i == 1:
-        matrix[i][0] = push + matrix[i-1][1]
-        matrix[i][1] = push + matrix[i-1][0]
+wines = [0]
+for _ in range(n):
+    wines.append(int(input()))
+matrix = [ 0 for col in range(n+1)]
+
+for i in range(1, n+1):
+    if i == 1:
+        matrix[i] = wines[1]
     elif i == 2:
-        matrix[i][0] = push + matrix[i-2][0]
-        matrix[i][1] = push + matrix[i-1][0]
+        matrix[i] = wines[1] + wines[2]
     elif i >= 3:
-        matrix[i][0] = push + matrix[i-2][1]
-        matrix[i][1] = push + matrix[i-1][0]
+        matrix[i] = max(matrix[i-1], matrix[i-3] + wines[i-1] + wines[i], matrix[i-2] + wines[i])
 
-
-max_value = -1
-for i in range(n):
-    max_value = max(max_value, max(matrix[i]))
-
-print(max_value)
+print(matrix[n])
