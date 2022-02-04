@@ -21,5 +21,4 @@ dp_2 = dp_2[::-1]
 dp_3 = []
 for i in range(size_of_arr):
     dp_3.append(dp_1[i] + dp_2[i])
-
 print(max(dp_3) - 1)
