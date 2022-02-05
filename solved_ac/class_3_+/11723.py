@@ -34,4 +34,4 @@ for _ in range(M):
         for i in range(21):
             data_set[i] = 0
 
-print(*answers,sep='\n')
+
